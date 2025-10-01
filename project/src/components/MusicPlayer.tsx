@@ -105,7 +105,8 @@ export default function MusicPlayer() {
       >
         <source
           // src="/happy-birthday-220024.mp3"
-          src="/beautiful-sexy-and-forty-40th-birthday-song-for-a-woman-413089.mp3"
+          // src="/beautiful-sexy-and-forty-40th-birthday-song-for-a-woman-413089.mp3"
+          src="/Haye Re Mere Yaar Ka Birthday-(Mr-Jat.in).mp3"
           type="audio/mpeg"
         />
       </audio>

@@ -10,6 +10,7 @@ import BirthdayCake3D from './components/BirthdayCake3D';
 import BirthdayTimeline from './components/BirthdayTimeline';
 import FloatingWishes from './components/FloatingWishes';
 import BirthdayMemoryGame from './components/BirthdayMemoryGame';
+import BirthdayShayari from './components/BirthdayShayari';
 import { ThemeProvider } from './components/ThemeContext';
 import ThemeSelector from './components/ThemeSelector';
 import { useTheme } from './hooks/useTheme';
@@ -32,6 +33,7 @@ function ThemedApp() {
       <BirthdayCake3D />
       <BirthdayTimeline />
       <PhotoSlideshow />
+      <BirthdayShayari />
       <BirthdayMemoryGame />
       <PersonalMessage />
       <CountdownTimer />

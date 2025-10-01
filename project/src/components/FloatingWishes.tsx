@@ -18,18 +18,18 @@ interface FloatingWish {
 }
 
 const wishTexts = [
-  "Happy Birthday Pragyesh!",
-  "May all your dreams come true!",
-  "Wishing you joy and happiness!",
-  "Another year of amazing adventures!",
-  "You're absolutely wonderful!",
-  "Hope your day is magical!",
-  "Celebrating you today!",
-  "Here's to another fantastic year!",
-  "You deserve all the best!",
-  "Have the most amazing birthday!",
-  "Sending you lots of love!",
-  "May this year be your best yet!",
+  "Happy Birthday!",
+  "Dreams come true!",
+  "Joy & Happiness!",
+  "Amazing year ahead!",
+  "You're wonderful!",
+  "Magical day!",
+  "Celebrating you!",
+  "Fantastic year!",
+  "Best wishes!",
+  "Amazing birthday!",
+  "Lots of love!",
+  "Best year yet!",
 ];
 
 const emojis = ['🎉', '🎂', '🎈', '✨', '🌟', '💖', '🎁', '🥳', '🍰', '🎊', '💫', '🌈'];
@@ -53,11 +53,11 @@ export default function FloatingWishes() {
       const newWish: FloatingWish = {
         id: Date.now() + Math.random(),
         text: wishTexts[Math.floor(Math.random() * wishTexts.length)],
-        x: Math.random() * (window.innerWidth - 300),
+        x: Math.random() * (window.innerWidth - 200),
         y: window.innerHeight + 50,
         vx: (Math.random() - 0.5) * 2,
         vy: -Math.random() * 2 - 1,
-        size: Math.random() * 8 + 16,
+        size: Math.random() * 4 + 10,
         color: colors[Math.floor(Math.random() * colors.length)],
         emoji: emojis[Math.floor(Math.random() * emojis.length)],
         life: 0,
@@ -90,12 +90,12 @@ export default function FloatingWishes() {
     };
 
     // Create initial wishes
-    for (let i = 0; i < 3; i++) {
-      setTimeout(createWish, i * 2000);
+    for (let i = 0; i < 2; i++) {
+      setTimeout(createWish, i * 3000);
     }
 
     // Continue creating wishes
-    const wishInterval = setInterval(createWish, 3000);
+    const wishInterval = setInterval(createWish, 5000);
     const animationInterval = setInterval(animate, 50);
 
     const timeout = setTimeout(() => {
@@ -128,15 +128,15 @@ export default function FloatingWishes() {
           }}
         >
           <div
-            className={`bg-gradient-to-r ${wish.color} text-white px-6 py-3 rounded-full shadow-lg backdrop-blur-sm border border-white/20 flex items-center gap-2 whitespace-nowrap`}
+            className={`bg-gradient-to-r ${wish.color} text-white px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm border border-white/30 flex items-center gap-1.5 whitespace-nowrap`}
             style={{
               fontSize: `${wish.size}px`,
-              boxShadow: '0 8px 32px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.1)',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.1)',
             }}
           >
-            <span className="text-xl">{wish.emoji}</span>
-            <span className="font-semibold drop-shadow-sm">{wish.text}</span>
-            <span className="text-xl">{wish.emoji}</span>
+            <span className="text-sm">{wish.emoji}</span>
+            <span className="font-medium drop-shadow-sm text-xs">{wish.text}</span>
+            <span className="text-sm">{wish.emoji}</span>
           </div>
         </div>
       ))}
@@ -151,17 +151,17 @@ export default function FloatingWishes() {
             top: `${wish.y + 20}px`,
           }}
         >
-          {Array.from({ length: 5 }).map((_, i) => (
+          {Array.from({ length: 3 }).map((_, i) => (
             <div
               key={i}
               className="absolute text-yellow-300 animate-ping"
               style={{
-                left: `${i * -20 + Math.sin(wish.life * 0.1 + i) * 10}px`,
-                top: `${i * 10 + Math.cos(wish.life * 0.1 + i) * 5}px`,
-                animationDelay: `${i * 0.2}s`,
-                animationDuration: '1s',
-                opacity: wish.opacity * 0.7,
-                fontSize: '12px',
+                left: `${i * -15 + Math.sin(wish.life * 0.1 + i) * 8}px`,
+                top: `${i * 8 + Math.cos(wish.life * 0.1 + i) * 4}px`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: '1.5s',
+                opacity: wish.opacity * 0.5,
+                fontSize: '8px',
               }}
             >
               ✨
@@ -172,17 +172,17 @@ export default function FloatingWishes() {
 
       {/* Heart Rain Effect */}
       <div className="absolute inset-0">
-        {Array.from({ length: 10 }).map((_, i) => (
+        {Array.from({ length: 6 }).map((_, i) => (
           <div
             key={`heart-${i}`}
             className="absolute text-pink-400 animate-bounce"
             style={{
-              left: `${(i * 10) % 100}%`,
+              left: `${(i * 15) % 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`,
-              fontSize: `${12 + Math.random() * 8}px`,
-              opacity: 0.6,
+              animationDelay: `${Math.random() * 4}s`,
+              animationDuration: `${3 + Math.random() * 2}s`,
+              fontSize: `${10 + Math.random() * 6}px`,
+              opacity: 0.4,
             }}
           >
             💖
@@ -197,19 +197,19 @@ export default function FloatingWishes() {
         </div>
       </div> */}
 
-      {/* Floating Numbers */}
-      {Array.from({ length: 6 }).map((_, i) => (
+      {/* Floating Emojis */}
+      {Array.from({ length: 4 }).map((_, i) => (
         <div
-          key={`number-${i}`}
-          className="absolute text-4xl font-bold text-purple-300 animate-bounce opacity-30"
+          key={`emoji-${i}`}
+          className="absolute text-2xl font-bold text-purple-300 animate-bounce opacity-25"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 2}s`,
-            animationDuration: `${3 + Math.random() * 2}s`,
+            animationDelay: `${Math.random() * 3}s`,
+            animationDuration: `${4 + Math.random() * 2}s`,
           }}
         >
-          {i === 0 ? '🎉' : i === 1 ? '🎊' : i === 2 ? '🎈' : i === 3 ? '🎁' : i === 4 ? '🍰' : '🥳'}
+          {i === 0 ? '🎉' : i === 1 ? '🎊' : i === 2 ? '🎈' : '🎁'}
         </div>
       ))}
     </div>

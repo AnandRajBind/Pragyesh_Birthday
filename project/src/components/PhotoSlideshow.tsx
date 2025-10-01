@@ -19,21 +19,24 @@ const photos: Photo[] = [
   },
   {
     id: 1,
-    url: '/IMG-20250314-WA0022.jpg',
+    url: '/WhatsApp Image 2025-10-01 at 11.47.52 PM.jpeg',
+
     caption: 'Celebrating Life',
     likes: 24,
     tags: ['celebration', 'life', 'joy']
   },
   {
     id: 2,
-    url: '/IMG-20250310-WA0008.jpg',
+    url: '/IMG-20250428-WA0007.jpg',
+
     caption: 'Special Moments',
     likes: 18,
     tags: ['special', 'moments', 'memory']
   },
   {
     id: 3,
-    url: '/IMG-20250314-WA0023.jpg',
+    url: '/IMG-20250428-WA0005.jpg',
+
     caption: 'Birthday Joy',
     likes: 32,
     tags: ['birthday', 'joy', 'happiness']
@@ -75,14 +78,14 @@ const photos: Photo[] = [
   },
   {
     id: 9,
-    url: '/IMG-20250428-WA0007.jpg',
+    url: '/IMG-20250314-WA0022.jpg',
     caption: 'Beautiful Moments',
     likes: 35,
     tags: ['cherished', 'moments', 'love']
   },
   {
     id: 10,
-    url: '/IMG-20250428-WA0005.jpg',
+    url: '/IMG-20250314-WA0023.jpg',
     caption: 'Happy Times',
     likes: 35,
     tags: ['cherished', 'moments', 'love']
@@ -192,8 +195,8 @@ export default function PhotoSlideshow() {
                 key={filter.key}
                 onClick={() => setSelectedFilter(filter.key as FilterType)}
                 className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${selectedFilter === filter.key
-                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
-                    : 'text-gray-600 hover:bg-white/80'
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
+                  : 'text-gray-600 hover:bg-white/80'
                   }`}
               >
                 <span className="mr-2">{filter.icon}</span>
@@ -291,8 +294,8 @@ export default function PhotoSlideshow() {
                         toggleLike(filteredPhotos[currentIndex].id);
                       }}
                       className={`p-2 rounded-full transition-all ${likedPhotos.has(filteredPhotos[currentIndex].id)
-                          ? 'bg-red-500 text-white'
-                          : 'bg-white/20 text-white hover:bg-white/30'
+                        ? 'bg-red-500 text-white'
+                        : 'bg-white/20 text-white hover:bg-white/30'
                         }`}
                     >
                       <Heart className="w-5 h-5" />
@@ -333,8 +336,8 @@ export default function PhotoSlideshow() {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
-                      ? 'bg-white w-8'
-                      : 'bg-white/50 hover:bg-white/75'
+                    ? 'bg-white w-8'
+                    : 'bg-white/50 hover:bg-white/75'
                     }`}
                   aria-label={`Go to photo ${index + 1}`}
                 />
@@ -400,8 +403,8 @@ export default function PhotoSlideshow() {
                     <button
                       onClick={() => toggleLike(filteredPhotos[lightboxIndex].id)}
                       className={`p-2 rounded-full transition-all ${likedPhotos.has(filteredPhotos[lightboxIndex].id)
-                          ? 'bg-red-500 text-white'
-                          : 'bg-white/20 hover:bg-white/30'
+                        ? 'bg-red-500 text-white'
+                        : 'bg-white/20 hover:bg-white/30'
                         }`}
                     >
                       <Heart className="w-5 h-5" />
