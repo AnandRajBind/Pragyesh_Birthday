@@ -1,10 +1,16 @@
 import { Heart } from 'lucide-react';
+import BirthdayPersonImage from './BirthdayPersonImage';
 
 export default function PersonalMessage() {
   return (
     <div className="py-16 px-4 bg-white/50">
       <div className="max-w-3xl mx-auto text-center">
-        <div className="inline-flex items-center justify-center mb-6">
+        <div className="flex flex-col items-center justify-center mb-6">
+          <BirthdayPersonImage 
+            size="large" 
+            src="/images/pragyesh.jpg"
+            className="mb-4"
+          />
           <Heart className="w-12 h-12 text-pink-500 fill-pink-500 animate-pulse" />
         </div>
 
@@ -27,7 +33,7 @@ export default function PersonalMessage() {
             and the fulfillment of your dreams. You deserve all the happiness in the world!
           </p>
 
-          <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-semibold text-pink-600">
+          <p className="text-lg md:text-xl leading-relaxed font-semibold text-pink-600">
             Here's to another amazing year ahead!
           </p>
 

@@ -1,5 +1,6 @@
 import { Cake, Sparkles } from 'lucide-react';
 import Confetti from './Confetti';
+import BirthdayPersonImage from './BirthdayPersonImage';
 
 interface HeroProps {
   showConfetti: boolean;
@@ -11,8 +12,17 @@ export default function Hero({ showConfetti }: HeroProps) {
       {showConfetti && <Confetti />}
 
       <div className="text-center z-10 px-4 animate-fade-in">
+        {/* Birthday person's image */}
+        <div className="flex justify-center mb-6">
+          <BirthdayPersonImage 
+            size="hero" 
+            src="\images\pragyesh.jpeg"
+            className="animate-bounce-slow"
+          />
+        </div>
+
         <div className="flex justify-center mb-6 animate-bounce-slow">
-          <Cake className="w-20 h-20 text-pink-500" strokeWidth={1.5} />
+          <Cake className="w-16 h-16 text-pink-500" strokeWidth={1.5} />
         </div>
 
         <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent animate-gradient">
@@ -20,7 +30,7 @@ export default function Hero({ showConfetti }: HeroProps) {
         </h1>
 
         <h2 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
-          Pragyesh Kumar Seth!
+          Pragyesh Kumar Seth!  उर्फ़  PK व MotA Bhai
         </h2>
 
         <div className="flex justify-center gap-2 mb-8">

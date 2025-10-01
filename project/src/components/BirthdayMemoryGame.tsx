@@ -17,7 +17,7 @@ interface GameStats {
   totalMatches: number;
 }
 
-const emojis = ['🎂', '🎈', '🎁', '🎉', '🎊', '🥳', '🍰', '🎭', '🌟', '💫', '🎵', '🎯'];
+const emojis = ['🎂', '🎈', '🎁', '🎉', '🎊', '💫', '🎵', '🎯'];
 
 export default function BirthdayMemoryGame() {
   const [cards, setCards] = useState<Card[]>([]);

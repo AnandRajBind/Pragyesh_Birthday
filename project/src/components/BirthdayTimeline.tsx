@@ -19,7 +19,7 @@ export default function BirthdayTimeline() {
   const timelineEvents: TimelineEvent[] = [
     {
       id: 1,
-      year: 2023,
+      year: 2025,
       title: "Amazing 2023 Birthday!",
       description: "What a fantastic celebration with friends and family. The surprise party was absolutely incredible!",
       icon: "🎂",
@@ -28,7 +28,7 @@ export default function BirthdayTimeline() {
     },
     {
       id: 2,
-      year: 2023,
+      year: 2024,
       title: "Career Milestone",
       description: "Achieved a significant professional milestone this year that marked a new chapter in life.",
       icon: "🏆",
@@ -37,7 +37,7 @@ export default function BirthdayTimeline() {
     },
     {
       id: 3,
-      year: 2022,
+      year: 2023,
       title: "Memorable Trip",
       description: "An unforgettable birthday trip that created memories to last a lifetime.",
       icon: "✈️",

@@ -39,12 +39,11 @@ function ThemedApp() {
       <ShareButtons />
 
       <footer className="text-center py-8 text-gray-600 text-sm">
-        <p>Made with love for Pragyesh Kumar Seth 💝</p>
+        <p>"Made with love by Anand Raj Bind for Pragyesh Kumar Seth 💝</p>
       </footer>
     </div>
   );
 }
-
 function App() {
   return (
     <ThemeProvider>

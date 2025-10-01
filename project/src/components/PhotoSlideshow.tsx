@@ -11,43 +11,85 @@ interface Photo {
 
 const photos: Photo[] = [
   {
+    id: 0,
+    url: '/public/IMG-20250830-WA0000.jpg',
+    caption: 'Happy Birthday Pragyesh! 🎂',
+    likes: 50,
+    tags: ['birthday', 'pragyesh', 'special']
+  },
+  {
     id: 1,
-    url: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    // url: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    url: '/IMG-20250314-WA0022.jpg',
     caption: 'Celebrating Life',
     likes: 24,
     tags: ['celebration', 'life', 'joy']
   },
   {
     id: 2,
-    url: 'https://images.pexels.com/photos/1729797/pexels-photo-1729797.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    // url: 'https://images.pexels.com/photos/1729797/pexels-photo-1729797.jpeg?auto=compress&cs=tinysrgb&w=1200',
+
+    url: '/public/IMG-20250310-WA0008.jpg',
     caption: 'Special Moments',
     likes: 18,
     tags: ['special', 'moments', 'memory']
   },
   {
     id: 3,
-    url: 'https://images.pexels.com/photos/1488315/pexels-photo-1488315.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    // url: 'https://images.pexels.com/photos/1488315/pexels-photo-1488315.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    url: '/public/IMG-20250314-WA0023.jpg',
+
     caption: 'Birthday Joy',
     likes: 32,
     tags: ['birthday', 'joy', 'happiness']
   },
   {
     id: 4,
-    url: 'https://images.pexels.com/photos/3402846/pexels-photo-3402846.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    // url: 'https://images.pexels.com/photos/3402846/pexels-photo-3402846.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    url: '/public/IMG-20250315-WA0007.jpg',
+
     caption: 'Making Memories',
     likes: 27,
     tags: ['memories', 'friends', 'fun']
   },
   {
     id: 5,
-    url: 'https://images.pexels.com/photos/1857157/pexels-photo-1857157.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    url: '/public/IMG-20250428-WA0004.jpg',
     caption: 'Wonderful Times',
     likes: 21,
     tags: ['wonderful', 'times', 'celebration']
   },
   {
     id: 6,
-    url: 'https://images.pexels.com/photos/2072045/pexels-photo-2072045.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    url: '/public/IMG-20250315-WA0010.jpg',
+    caption: 'Cherished Moments',
+    likes: 35,
+    tags: ['cherished', 'moments', 'love']
+  },
+  {
+    id: 7,
+    url: '/public/IMG20250407152727.jpg',
+    caption: 'Cherished Moments',
+    likes: 35,
+    tags: ['cherished', 'moments', 'love']
+  },
+  {
+    id: 8,
+    url: '/public/IMG20250407152242.jpg',
+    caption: 'Cherished Moments',
+    likes: 35,
+    tags: ['cherished', 'moments', 'love']
+  },
+  {
+    id: 9,
+    url: '/public/IMG-20250428-WA0007.jpg',
+    caption: 'Cherished Moments',
+    likes: 35,
+    tags: ['cherished', 'moments', 'love']
+  },
+  {
+    id: 10,
+    url: '/public/IMG-20250428-WA0005.jpg',
     caption: 'Cherished Moments',
     likes: 35,
     tags: ['cherished', 'moments', 'love']
@@ -65,13 +107,13 @@ export default function PhotoSlideshow() {
   const [likedPhotos, setLikedPhotos] = useState<Set<number>>(new Set());
   const [autoPlay, setAutoPlay] = useState(true);
 
-  const filteredPhotos = photos.filter(photo => 
+  const filteredPhotos = photos.filter(photo =>
     selectedFilter === 'all' || photo.tags.includes(selectedFilter)
   );
 
   useEffect(() => {
     if (!autoPlay) return;
-    
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % filteredPhotos.length);
     }, 4000);
@@ -151,11 +193,10 @@ export default function PhotoSlideshow() {
               <button
                 key={filter.key}
                 onClick={() => setSelectedFilter(filter.key as FilterType)}
-                className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
-                  selectedFilter === filter.key
+                className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${selectedFilter === filter.key
                     ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
                     : 'text-gray-600 hover:bg-white/80'
-                }`}
+                  }`}
               >
                 <span className="mr-2">{filter.icon}</span>
                 {filter.label}
@@ -231,11 +272,10 @@ export default function PhotoSlideshow() {
                         e.stopPropagation();
                         toggleLike(filteredPhotos[currentIndex].id);
                       }}
-                      className={`p-2 rounded-full transition-all ${
-                        likedPhotos.has(filteredPhotos[currentIndex].id)
+                      className={`p-2 rounded-full transition-all ${likedPhotos.has(filteredPhotos[currentIndex].id)
                           ? 'bg-red-500 text-white'
                           : 'bg-white/20 text-white hover:bg-white/30'
-                      }`}
+                        }`}
                     >
                       <Heart className="w-5 h-5" />
                     </button>
@@ -274,11 +314,10 @@ export default function PhotoSlideshow() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex
+                  className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
                       ? 'bg-white w-8'
                       : 'bg-white/50 hover:bg-white/75'
-                  }`}
+                    }`}
                   aria-label={`Go to photo ${index + 1}`}
                 />
               ))}
@@ -295,7 +334,7 @@ export default function PhotoSlideshow() {
                 alt={filteredPhotos[lightboxIndex].caption}
                 className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
               />
-              
+
               {/* Close Button */}
               <button
                 onClick={closeLightbox}
@@ -332,11 +371,10 @@ export default function PhotoSlideshow() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => toggleLike(filteredPhotos[lightboxIndex].id)}
-                      className={`p-2 rounded-full transition-all ${
-                        likedPhotos.has(filteredPhotos[lightboxIndex].id)
+                      className={`p-2 rounded-full transition-all ${likedPhotos.has(filteredPhotos[lightboxIndex].id)
                           ? 'bg-red-500 text-white'
                           : 'bg-white/20 hover:bg-white/30'
-                      }`}
+                        }`}
                     >
                       <Heart className="w-5 h-5" />
                     </button>

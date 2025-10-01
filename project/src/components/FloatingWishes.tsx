@@ -191,11 +191,11 @@ export default function FloatingWishes() {
       </div>
 
       {/* Birthday Confetti Text */}
-      <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 pointer-events-none">
+      {/* <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 pointer-events-none">
         <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-pink-400 via-purple-500 to-blue-500 bg-clip-text text-transparent animate-pulse opacity-20">
           🎂 HAPPY BIRTHDAY 🎂
         </div>
-      </div>
+      </div> */}
 
       {/* Floating Numbers */}
       {Array.from({ length: 6 }).map((_, i) => (
