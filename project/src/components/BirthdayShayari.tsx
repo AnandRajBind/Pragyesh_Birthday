@@ -37,7 +37,7 @@ export default function BirthdayShayari() {
             💝 दिल से दिल तक 💝
           </h2>
           <p className="text-lg text-gray-600 font-medium">
-            मोताभाई प्रज्ञेश के लिए खास शायरी
+            मोटाभाई प्रज्ञेश के लिए खास शायरी
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export default function BirthdayShayari() {
               
               <div className="space-y-4 text-center">
                 <p className="text-base md:text-lg font-medium text-gray-700 leading-relaxed hover:text-emerald-600 transition-colors">
-                  मोताभाई हमारी जान हैं,
+                  मोटाभाई हमारी जान हैं,
                 </p>
                 <p className="text-base md:text-lg font-medium text-gray-700 leading-relaxed hover:text-emerald-600 transition-colors">
                   दोस्ती की पहचान हैं।
@@ -114,7 +114,7 @@ export default function BirthdayShayari() {
               
               <div className="space-y-4 text-center">
                 <p className="text-base md:text-lg font-medium text-gray-700 leading-relaxed hover:text-orange-600 transition-colors">
-                  मोताभाई की बात ही न्यारी है,
+                  मोटाभाई की बात ही न्यारी है,
                 </p>
                 <p className="text-base md:text-lg font-medium text-gray-700 leading-relaxed hover:text-orange-600 transition-colors">
                   उनकी दोस्ती सबसे प्यारी है।
