@@ -20,7 +20,7 @@ const photos: Photo[] = [
   {
     id: 1,
     // url: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    url: '/IMG-20250314-WA0022.jpg',
+    url: '/public/IMG-20250314-WA0022.jpg',
     caption: 'Celebrating Life',
     likes: 24,
     tags: ['celebration', 'life', 'joy']
