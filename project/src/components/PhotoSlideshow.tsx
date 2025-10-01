@@ -12,85 +12,78 @@ interface Photo {
 const photos: Photo[] = [
   {
     id: 0,
-    url: '/public/IMG-20250830-WA0000.jpg',
+    url: '/IMG-20250830-WA0000.jpg',
     caption: 'Happy Birthday Pragyesh! 🎂',
     likes: 50,
     tags: ['birthday', 'pragyesh', 'special']
   },
   {
     id: 1,
-    // url: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    url: '/public/IMG-20250314-WA0022.jpg',
+    url: '/IMG-20250314-WA0022.jpg',
     caption: 'Celebrating Life',
     likes: 24,
     tags: ['celebration', 'life', 'joy']
   },
   {
     id: 2,
-    // url: 'https://images.pexels.com/photos/1729797/pexels-photo-1729797.jpeg?auto=compress&cs=tinysrgb&w=1200',
-
-    url: '/public/IMG-20250310-WA0008.jpg',
+    url: '/IMG-20250310-WA0008.jpg',
     caption: 'Special Moments',
     likes: 18,
     tags: ['special', 'moments', 'memory']
   },
   {
     id: 3,
-    // url: 'https://images.pexels.com/photos/1488315/pexels-photo-1488315.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    url: '/public/IMG-20250314-WA0023.jpg',
-
+    url: '/IMG-20250314-WA0023.jpg',
     caption: 'Birthday Joy',
     likes: 32,
     tags: ['birthday', 'joy', 'happiness']
   },
   {
     id: 4,
-    // url: 'https://images.pexels.com/photos/3402846/pexels-photo-3402846.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    url: '/public/IMG-20250315-WA0007.jpg',
-
+    url: '/IMG-20250315-WA0007.jpg',
     caption: 'Making Memories',
     likes: 27,
     tags: ['memories', 'friends', 'fun']
   },
   {
     id: 5,
-    url: '/public/IMG-20250428-WA0004.jpg',
+    url: '/IMG-20250428-WA0004.jpg',
     caption: 'Wonderful Times',
     likes: 21,
     tags: ['wonderful', 'times', 'celebration']
   },
   {
     id: 6,
-    url: '/public/IMG-20250315-WA0010.jpg',
+    url: '/IMG-20250315-WA0010.jpg',
     caption: 'Cherished Moments',
     likes: 35,
     tags: ['cherished', 'moments', 'love']
   },
   {
     id: 7,
-    url: '/public/IMG20250407152727.jpg',
-    caption: 'Cherished Moments',
+    url: '/IMG20250407152727.jpg',
+    caption: 'Special Day',
     likes: 35,
     tags: ['cherished', 'moments', 'love']
   },
   {
     id: 8,
-    url: '/public/IMG20250407152242.jpg',
+    url: '/IMG20250407152242.jpg',
     caption: 'Cherished Moments',
     likes: 35,
     tags: ['cherished', 'moments', 'love']
   },
   {
     id: 9,
-    url: '/public/IMG-20250428-WA0007.jpg',
-    caption: 'Cherished Moments',
+    url: '/IMG-20250428-WA0007.jpg',
+    caption: 'Beautiful Moments',
     likes: 35,
     tags: ['cherished', 'moments', 'love']
   },
   {
     id: 10,
-    url: '/public/IMG-20250428-WA0005.jpg',
-    caption: 'Cherished Moments',
+    url: '/IMG-20250428-WA0005.jpg',
+    caption: 'Happy Times',
     likes: 35,
     tags: ['cherished', 'moments', 'love']
   },
@@ -106,6 +99,11 @@ export default function PhotoSlideshow() {
   const [selectedFilter, setSelectedFilter] = useState<FilterType>('all');
   const [likedPhotos, setLikedPhotos] = useState<Set<number>>(new Set());
   const [autoPlay, setAutoPlay] = useState(true);
+  const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
+
+  const handleImageError = (photoId: number) => {
+    setImageErrors(prev => new Set([...prev, photoId]));
+  };
 
   const filteredPhotos = photos.filter(photo =>
     selectedFilter === 'all' || photo.tags.includes(selectedFilter)
@@ -223,11 +221,21 @@ export default function PhotoSlideshow() {
                 onClick={() => openLightbox(index)}
               >
                 <div className="aspect-square overflow-hidden">
-                  <img
-                    src={photo.url}
-                    alt={photo.caption}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
+                  {imageErrors.has(photo.id) ? (
+                    <div className="w-full h-full bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center">
+                      <div className="text-center">
+                        <Camera className="w-12 h-12 text-gray-400 mx-auto mb-2" />
+                        <p className="text-gray-500 text-sm">Photo Loading...</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src={photo.url}
+                      alt={photo.caption}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      onError={() => handleImageError(photo.id)}
+                    />
+                  )}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4">
@@ -247,13 +255,23 @@ export default function PhotoSlideshow() {
           /* Slideshow View */
           <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden">
             <div className="relative aspect-video">
-              <img
-                src={filteredPhotos[currentIndex].url}
-                alt={filteredPhotos[currentIndex].caption}
-                className="w-full h-full object-cover animate-fade-in cursor-pointer"
-                key={currentIndex}
-                onClick={() => openLightbox(currentIndex)}
-              />
+              {imageErrors.has(filteredPhotos[currentIndex].id) ? (
+                <div className="w-full h-full bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center">
+                  <div className="text-center">
+                    <Camera className="w-20 h-20 text-gray-400 mx-auto mb-4" />
+                    <p className="text-gray-500 text-lg">Loading beautiful moments...</p>
+                  </div>
+                </div>
+              ) : (
+                <img
+                  src={filteredPhotos[currentIndex].url}
+                  alt={filteredPhotos[currentIndex].caption}
+                  className="w-full h-full object-cover animate-fade-in cursor-pointer"
+                  key={currentIndex}
+                  onClick={() => openLightbox(currentIndex)}
+                  onError={() => handleImageError(filteredPhotos[currentIndex].id)}
+                />
+              )}
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
                 <div className="p-8 flex justify-between items-end w-full">
@@ -329,11 +347,21 @@ export default function PhotoSlideshow() {
         {isLightboxOpen && (
           <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4">
             <div className="relative max-w-5xl max-h-full">
-              <img
-                src={filteredPhotos[lightboxIndex].url}
-                alt={filteredPhotos[lightboxIndex].caption}
-                className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
-              />
+              {imageErrors.has(filteredPhotos[lightboxIndex].id) ? (
+                <div className="w-full h-96 bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center rounded-lg">
+                  <div className="text-center">
+                    <Camera className="w-24 h-24 text-gray-400 mx-auto mb-4" />
+                    <p className="text-gray-500 text-xl">Photo not available</p>
+                  </div>
+                </div>
+              ) : (
+                <img
+                  src={filteredPhotos[lightboxIndex].url}
+                  alt={filteredPhotos[lightboxIndex].caption}
+                  className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+                  onError={() => handleImageError(filteredPhotos[lightboxIndex].id)}
+                />
+              )}
 
               {/* Close Button */}
               <button

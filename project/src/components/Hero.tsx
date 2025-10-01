@@ -16,7 +16,7 @@ export default function Hero({ showConfetti }: HeroProps) {
         <div className="flex justify-center mb-6">
           <BirthdayPersonImage 
             size="hero" 
-            src="\images\pragyesh.jpeg"
+            src="/images/pragyesh.jpeg"
             className="animate-bounce-slow"
           />
         </div>
