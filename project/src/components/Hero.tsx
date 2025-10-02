@@ -30,7 +30,7 @@ export default function Hero({ showConfetti }: HeroProps) {
         </h1>
 
         <h2 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
-          Pragyesh Kumar Seth!  उर्फ़  PK व MotA Bhai
+          Pragyesh Kumar Seth!  उर्फ़  PK व Mota Bhai
         </h2>
 
         <div className="flex justify-center gap-2 mb-8">
